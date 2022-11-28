@@ -20,7 +20,6 @@ module PE_cluster #(
 	input  logic i_weight_valid,
 	input  logic [LOG_MFW:0] i_wr_w_row_ptr,
 	input  logic [LOG_MFW:0] i_wr_w_col_ptr,
-	input  logic [LOG_MRN:0] i_row_num,
 	// output
 	output wor   [DATA_WIDTH-1:0] o_peout_data,
 	output logic o_peout_valid  // This is a pulse
@@ -63,7 +62,7 @@ module PE_cluster #(
 				.o_peout_data(peout_data[i]),
 				.o_peout_valid(peout_valid[i]),  // This is a pulse
 				// allow lower PE load ifmap
-				.o_en_loadi_lower(en_loadi_lower[i])
+				.o_en_loadi_lower(en_loadi_lower[i]),
 				.o_last_psum(last_psum[i])
 			);
         end
@@ -80,18 +79,5 @@ module PE_cluster #(
 
 	assign o_peout_valid = | peout_valid;
 	assign switch_lane   = last_psum[i_row_num - 1];
-	
-	// synopsys sync_set_reset "reset"
-	always_ff @( posedge clk ) begin:
-		if(reset) begin
-			first_batch <= 1;
-		end
-		else if(i_reset_ifmap) begin:
-			first_batch <= 1;
-		end
-		else if(i_weight_valid && i_pe_en) begin
-			weight[i_wr_w_row_ptr][i_wr_w_col_ptr]	<= i_weight_data;
-		end
-	end
 
 endmodule
