@@ -1,5 +1,6 @@
+`timescale 1ns/100ps
 module PE_row #(
-    
+    // synopsys template
 	parameter 	DATA_WIDTH = 16,
 	parameter 	MAX_FILTER_WIDTH = 11,	//Also num of PEs in a row.
 	localparam	LOG_MFW = $clog2(MAX_FILTER_WIDTH)
