@@ -33,9 +33,11 @@ module PE #(
 	output logic o_peout_valid,  // This is a pulse
 	// allow right/lower PE load ifmap
 	output logic o_en_loadi_right, o_en_loadi_lower,
-	// row done signal pass to right and to generate i_newline
+	// row done signal pass to right
 	input  logic i_row_done,
-	output logic o_row_done
+	output logic o_row_done,
+	output logic o_last_in_row,
+	output logic o_last_psum
 );
 
 	////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,8 +52,6 @@ module PE #(
 	logic next_lane_cal;
 	logic pe_done;
 	// PE state
-	logic last_in_row;
-	logic last_psum;
 	logic row_loadi_en;
 	logic accept_ifmap;
 	logic newline;
@@ -108,14 +108,14 @@ module PE #(
 		else if(newline) begin
 			lane_feed <= lane_cal;
 		end
-		else if(last_in_row) begin
+		else if(o_last_in_row) begin
 			lane_feed <= next_lane_cal;
 		end
 	end
 
 	// 2. communication with adjacent PE - feed enable signal
-	assign last_psum           = (rd_w_row_ptr == i_filter_width - 1) && last_in_row;
-	assign last_in_row         = (w_col_ptr[lane_cal] == i_filter_width - 1) && accept_ifmap;
+	assign o_last_psum           = (rd_w_row_ptr == i_filter_width - 1) && o_last_in_row;
+	assign o_last_in_row         = (w_col_ptr[lane_cal] == i_filter_width - 1) && accept_ifmap;
 	assign o_en_loadi_right    = (w_col_ptr[lane_feed] >= i_stride);
 	assign o_en_loadi_lower    = (rd_w_row_ptr >= i_stride) || pe_done;
 	assign accept_ifmap        = i_pe_en & i_ifmap_valid & row_loadi_en & i_en_loadi_upper;
@@ -181,8 +181,8 @@ module PE #(
 			pe_done    <= 0;
 		end
 		else if(accept_ifmap) begin
-			o_row_done    <= last_in_row;
-			pe_done       <= last_psum;
+			o_row_done    <= o_last_in_row;
+			pe_done       <= o_last_psum;
 		end
 	end
 
@@ -190,7 +190,7 @@ module PE #(
 	always_ff @(posedge clk) begin
 		if(reset)                               o_peout_valid <= 0;
 		else if(i_reset_ifmap || o_peout_valid) o_peout_valid <= 0;
-		else                                    o_peout_valid <= last_psum;
+		else                                    o_peout_valid <= o_last_psum;
 	end
 
 	// synopsys sync_set_reset "reset"

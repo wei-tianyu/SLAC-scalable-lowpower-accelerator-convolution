@@ -20,25 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module SPad( 
-	clk, reset,
-
-	i_wen, i_waddr, i_wdata,
-
-	i_ren, i_raddr, o_rdata
-);
+module SPad #( 
 	// synopsys template
-	parameter DATA_BITWIDTH = 16;
-	parameter ADDR_BITWIDTH = 9;
-
-	input  logic clk;
-	input  logic reset;
-	input  logic i_ren;
-	input  logic i_wen;
-	input  logic [ADDR_BITWIDTH-1 : 0] i_raddr;
-	input  logic [ADDR_BITWIDTH-1 : 0] i_waddr;
-	input  logic [DATA_BITWIDTH-1 : 0] i_wdata;
-	output logic [DATA_BITWIDTH-1 : 0] o_rdata;
+	parameter DATA_BITWIDTH = 16,
+	parameter ADDR_BITWIDTH = 9
+) (
+	input  logic clk,
+	input  logic reset,
+	input  logic i_ren,
+	input  logic i_wen,
+	input  logic [ADDR_BITWIDTH-1 : 0] i_raddr,
+	input  logic [ADDR_BITWIDTH-1 : 0] i_waddr,
+	input  logic [DATA_BITWIDTH-1 : 0] i_wdata,
+	output logic [DATA_BITWIDTH-1 : 0] o_rdata
+);
 	
 	logic [0 : (1 << ADDR_BITWIDTH) - 1][DATA_BITWIDTH-1 : 0] r_mem; 
 	logic [DATA_BITWIDTH-1 : 0] r_data;
