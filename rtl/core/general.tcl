@@ -3,7 +3,7 @@
 #/*   Description : Default Synopsys Design Compiler Script 
 #/*   Usage       : dc_shell -tcl_mode -f ISR.scr          
 #/*   Describe    :	makefile for universal test
-#/*   Author      : 	Jianwei Jia
+#/*   Author      : 	Tianyu Wei
 #/*   Time        : 	2022-10-27
 #/*   Version     : 	2.0
 ###############################################################################
@@ -14,6 +14,7 @@
 #/* The following lines must be updated for every           */
 #/* new design                                              */
 #/***********************************************************/
+set_host_options -max_cores 8
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
 read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
 set_dont_touch $env(DONT_TOUCH_NAME)
@@ -130,7 +131,8 @@ if {  $dc_shell_status != [list] } {
   uniquify
   ungroup -all -flatten
   redirect $chk_file { check_design }
-  compile -map_effort high
+#   compile -map_effort high
+  compile_ultra
   write -hier -format verilog -output $netlist_file $design_name
   write -hier -format ddc -output $ddc_file $design_name
   redirect $rep_file { report_design -nosplit }

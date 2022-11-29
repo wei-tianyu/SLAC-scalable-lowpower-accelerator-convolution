@@ -6,6 +6,7 @@
  * @Last Modified time: 2022-11-04 11:41:51 
  */
 module PE #(
+	// synopsys template
 	parameter 	DATA_WIDTH = 16,
 	parameter 	MAX_FILTER_WIDTH = 11,	//AlexNet max configuration
 	localparam	LOG_MFW = $clog2(MAX_FILTER_WIDTH)
@@ -25,6 +26,8 @@ module PE #(
 	// write weight
 	input  logic [DATA_WIDTH-1:0] i_weight_data,
 	input  logic i_weight_valid,
+	input  logic [LOG_MFW:0] i_wr_w_row_ptr,
+	input  logic [LOG_MFW:0] i_wr_w_col_ptr,
 	// output
 	output logic [DATA_WIDTH-1:0] o_peout_data,
 	output logic o_peout_valid,  // This is a pulse
@@ -42,7 +45,7 @@ module PE #(
 	////////////////////////////////////////////////////////////////////////////////////////////
 	
 	// weight memory
-	logic [MAX_FILTER_WIDTH-1:0][DATA_WIDTH-1:0] w_row;
+	logic [MAX_FILTER_WIDTH-1:0][MAX_FILTER_WIDTH-1:0][DATA_WIDTH-1:0] weight;
 	// lane select
 	logic lane_feed;
 	logic lane_cal;
@@ -53,40 +56,14 @@ module PE #(
 	logic accept_ifmap;
 	logic newline;
 	// lane ptrs
-	logic [MAX_FILTER_WIDTH-1:0] wr_w_col_ptr;
-	logic [MAX_FILTER_WIDTH-1:0] wr_w_row_ptr;
-	logic [LOG_MFW-1:0] rd_w_row_ptr;
-	logic [MAX_FILTER_WIDTH-1:0][LOG_MFW-1:0] rd_w_col_ptr;
-	logic [MAX_FILTER_WIDTH-1:0] rd_w_en;
-	logic [MAX_FILTER_WIDTH-1:0] wr_w_en;
-	logic [1:0][DATA_WIDTH-1:0] psum;
-	logic [LOG_MFW-1:0] current_col;
-
-	////////////////////////////////////////////////////////////////////////////////////////////
-	// module instantiation
-	////////////////////////////////////////////////////////////////////////////////////////////
+	logic [1:0][LOG_MFW:0] w_col_ptr;
+	logic [LOG_MFW:0] rd_w_col_ptr;
+	logic [LOG_MFW:0] rd_w_row_ptr;
+	logic [1:0][LOG_MFW:0] restart_col;
 	
-	// shift register for weight
-	genvar i;
-	generate
-		// MAX_FILTER_WIDTH rows
-		for(i = 0; i < MAX_FILTER_WIDTH; i++) begin
-			shift_reg #( 
-				// synopsys template
-				.DATA_WIDTH(DATA_WIDTH),
-				.DEPTH(MAX_FILTER_WIDTH)
-			) lane_w (
-				.clk(clk),
-				.reset(reset),
-				.i_ren(rd_w_en[i]),
-				.i_wen(wr_w_en[i]),
-				.i_used_depth(i_filter_width),
-				.i_wdata(i_weight_data),
-				.o_rdata(w_row[i]),
-				.o_rd_ptr(rd_w_col_ptr[i])
-			);
-		end
-	endgenerate
+	///////////////////////////////
+	logic [1:0][DATA_WIDTH-1:0] psum;///////////////////////
+	
 
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// behavior
@@ -96,24 +73,12 @@ module PE #(
 	// synopsys sync_set_reset "reset"
 	always_ff @(posedge clk) begin
 		if(reset) begin
-			wr_w_col_ptr <= 1;
+			weight <= 0;
 		end
 		else if(i_weight_valid && i_pe_en) begin
-			wr_w_col_ptr  <= (wr_w_col_ptr[i_filter_width]) ? 1 : wr_w_col_ptr << 1;
+			weight[i_wr_w_row_ptr][i_wr_w_col_ptr]	<= i_weight_data;
 		end
 	end
-
-	// synopsys sync_set_reset "reset"
-	always_ff @(posedge clk) begin
-		if(reset) begin
-			wr_w_row_ptr <= 1;
-		end
-		else if(i_weight_valid && i_pe_en && wr_w_col_ptr[i_filter_width]) begin
-			wr_w_row_ptr  <= (wr_w_row_ptr[i_filter_width]) ? 1 : wr_w_row_ptr << 1;
-		end
-	end
-
-	assign wr_w_en = wr_w_row_ptr & i_weight_valid & i_pe_en;
 
 	// 1. which lane is under calculation, which lane is fed
 	assign next_lane_cal	= ~lane_cal;
@@ -149,13 +114,12 @@ module PE #(
 	end
 
 	// 2. communication with adjacent PE - feed enable signal
-	assign o_last_psum         = (rd_w_row_ptr == i_filter_width - 1) && o_last_in_row;
-	assign o_last_in_row       = (current_col == i_filter_width - 1) && accept_ifmap;
-	assign o_en_loadi_right    = (current_col >= i_stride);
+	assign o_last_psum           = (rd_w_row_ptr == i_filter_width - 1) && o_last_in_row;
+	assign o_last_in_row         = (w_col_ptr[lane_cal] == i_filter_width - 1) && accept_ifmap;
+	assign o_en_loadi_right    = (w_col_ptr[lane_feed] >= i_stride);
 	assign o_en_loadi_lower    = (rd_w_row_ptr >= i_stride) || pe_done;
 	assign accept_ifmap        = i_pe_en & i_ifmap_valid & row_loadi_en & i_en_loadi_upper;
 	assign newline		   	   = i_newline & i_en_loadi_upper;
-	assign current_col		   = rd_w_col_ptr[rd_w_row_ptr];
 
 	always_comb begin
 		if(i_row_done && (lane_feed == lane_cal)) row_loadi_en = 1;
@@ -163,11 +127,6 @@ module PE #(
 	end
 
 	// 3. new ifmap come in, updates ptr
-	generate
-		for(i = 0; i < MAX_FILTER_WIDTH; i++) begin
-			assign rd_w_en[i] = accept_ifmap && (rd_w_row_ptr == i);
-		end
-	endgenerate
 	// synopsys sync_set_reset "reset"
 	always_ff @(posedge clk) begin
 		if(reset) begin
@@ -181,7 +140,35 @@ module PE #(
 		end
 	end
 
+	// synopsys sync_set_reset "reset"
+	always_ff @(posedge clk) begin
+		if(reset) begin
+			w_col_ptr   <= 0;
+			restart_col <= 0;
+		end
+		else if(i_reset_ifmap || !i_pe_en) begin
+			w_col_ptr   <= 0;
+			restart_col <= 0;
+		end
+		else if(i_switch_lane) begin
+			w_col_ptr[next_lane_cal] <= restart_col[next_lane_cal];
+			w_col_ptr[lane_cal]      <= 0;
+			restart_col[lane_cal]    <= 0;
+		end
+		else if(newline) begin
+			w_col_ptr[lane_cal]    <= restart_col[lane_cal];
+			w_col_ptr[lane_feed]   <= 0;
+			restart_col[lane_feed] <= w_col_ptr[lane_feed] + 1;
+		end
+		else if(accept_ifmap) begin
+			w_col_ptr[lane_feed] <= (w_col_ptr[lane_feed] == i_filter_width - 1) ? 
+									(o_row_done ? 0 : restart_col[lane_cal])     :
+									w_col_ptr[lane_feed] + 1;
+		end
+	end
+
 	// 4. new ifmap come in, updates psum x 2.
+	assign rd_w_col_ptr  = w_col_ptr[lane_feed];
 	assign o_peout_data  = psum[~lane_feed];
 	// synopsys sync_set_reset "reset"
 	always_ff @(posedge clk) begin
@@ -218,7 +205,7 @@ module PE #(
 			if (o_peout_valid) begin
 				psum[~lane_feed] <= 0;
 			end
-			psum[lane_feed] <= psum[lane_feed] + w_row[rd_w_row_ptr] * i_ifmap_data;
+			psum[lane_feed] <= psum[lane_feed] + weight[rd_w_row_ptr][rd_w_col_ptr] * i_ifmap_data;
 		end
 	end
 endmodule
