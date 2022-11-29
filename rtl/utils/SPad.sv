@@ -22,7 +22,7 @@
 
 module SPad #( 
 	// synopsys template
-	parameter DATA_BITWIDTH = 16,
+	parameter DATA_WIDTH = 16,
 	parameter ADDR_BITWIDTH = 9
 ) (
 	input  logic clk,
@@ -31,12 +31,12 @@ module SPad #(
 	input  logic i_wen,
 	input  logic [ADDR_BITWIDTH-1 : 0] i_raddr,
 	input  logic [ADDR_BITWIDTH-1 : 0] i_waddr,
-	input  logic [DATA_BITWIDTH-1 : 0] i_wdata,
-	output logic [DATA_BITWIDTH-1 : 0] o_rdata
+	input  logic [DATA_WIDTH-1 : 0] i_wdata,
+	output logic [DATA_WIDTH-1 : 0] o_rdata
 );
 	
-	logic [0 : (1 << ADDR_BITWIDTH) - 1][DATA_BITWIDTH-1 : 0] r_mem; 
-	logic [DATA_BITWIDTH-1 : 0] r_data;
+	logic [0 : (1 << ADDR_BITWIDTH) - 1][DATA_WIDTH-1 : 0] r_mem; 
+	logic [DATA_WIDTH-1 : 0] r_data;
 	
 	always@(posedge clk)
 	begin : READ
