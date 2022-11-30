@@ -21,8 +21,8 @@
 UTILFILES 	 = ../utils/SPad.sv
 UTILFILES 	 = ../utils/shift_reg.sv
 PEFILES   	 = PE.sv
-# PEFILES   	+= PE_row.sv
-# PEFILES   	+= PE_cluster.sv
+PEFILES   	+= PE_row.sv
+PEFILES   	+= PE_cluster.sv
 # GLBFILES  	+= glb_iact.sv
 # GLBFILES  	+= glb_psum.sv
 # GLBFILES  	+= glb_weight.sv
@@ -42,13 +42,13 @@ LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 #########################configure part################################################
 # SIMULATION CONFIG -> just need to change this to change the simulation
 export SIMFILES
-export DESIGN_NAME = PE
+export DESIGN_NAME = PE_cluster
 export CLOCK_NET_NAME = clk
 export RESET_NET_NAME = reset
-export CLOCK_PERIOD = 5
+export CLOCK_PERIOD = 4
 
-# export DONT_TOUCH_NAME_DDC =  PE_row.ddc
-# export DONT_TOUCH_NAME = PE_row
+export DONT_TOUCH_NAME_DDC =  PE_row.ddc
+export DONT_TOUCH_NAME = PE_row
 
 # TESTBENCH = ../../testbench/router_cluster_5x5_tb.sv
 # HEADERS = $(wildcard *.svh)

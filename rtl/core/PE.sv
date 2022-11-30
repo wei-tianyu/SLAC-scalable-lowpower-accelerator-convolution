@@ -6,6 +6,7 @@
  * @Last Modified time: 2022-11-04 11:41:51 
  */
 module PE #(
+	// synopsys template
 	parameter 	DATA_WIDTH = 16,
 	parameter 	MAX_FILTER_WIDTH = 11,	//AlexNet max configuration
 	localparam	LOG_MFW = $clog2(MAX_FILTER_WIDTH)
@@ -72,7 +73,6 @@ module PE #(
 		// MAX_FILTER_WIDTH rows
 		for(i = 0; i < MAX_FILTER_WIDTH; i++) begin
 			shift_reg #( 
-				// synopsys template
 				.DATA_WIDTH(DATA_WIDTH),
 				.DEPTH(MAX_FILTER_WIDTH)
 			) lane_w (
@@ -99,7 +99,7 @@ module PE #(
 			wr_w_col_ptr <= 1;
 		end
 		else if(i_weight_valid && i_pe_en) begin
-			wr_w_col_ptr  <= (wr_w_col_ptr[i_filter_width]) ? 1 : wr_w_col_ptr << 1;
+			wr_w_col_ptr  <= (wr_w_col_ptr[i_filter_width-1]) ? 1 : wr_w_col_ptr << 1;
 		end
 	end
 
@@ -108,12 +108,12 @@ module PE #(
 		if(reset) begin
 			wr_w_row_ptr <= 1;
 		end
-		else if(i_weight_valid && i_pe_en && wr_w_col_ptr[i_filter_width]) begin
-			wr_w_row_ptr  <= (wr_w_row_ptr[i_filter_width]) ? 1 : wr_w_row_ptr << 1;
+		else if(i_weight_valid && i_pe_en && wr_w_col_ptr[i_filter_width-1]) begin
+			wr_w_row_ptr  <= (wr_w_row_ptr[i_filter_width-1]) ? 1 : wr_w_row_ptr << 1;
 		end
 	end
 
-	assign wr_w_en = wr_w_row_ptr & i_weight_valid & i_pe_en;
+	assign wr_w_en = wr_w_row_ptr & {MAX_FILTER_WIDTH{i_weight_valid}} & {MAX_FILTER_WIDTH{i_pe_en}};
 
 	// 1. which lane is under calculation, which lane is fed
 	assign next_lane_cal	= ~lane_cal;

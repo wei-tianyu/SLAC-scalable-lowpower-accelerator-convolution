@@ -18,8 +18,6 @@ module PE_cluster #(
 	// write weight
 	input  logic [DATA_WIDTH-1:0] i_weight_data,
 	input  logic i_weight_valid,
-	input  logic [LOG_MFW:0] i_wr_w_row_ptr,
-	input  logic [LOG_MFW:0] i_wr_w_col_ptr,
 	// output
 	output wor   [DATA_WIDTH-1:0] o_peout_data,
 	output logic o_peout_valid  // This is a pulse
@@ -56,8 +54,6 @@ module PE_cluster #(
 				// write weight
 				.i_weight_data(i_weight_data),
 				.i_weight_valid(i_weight_valid),
-				.i_wr_w_row_ptr(i_wr_w_row_ptr),
-				.i_wr_w_col_ptr(i_wr_w_col_ptr),
 				// output
 				.o_peout_data(peout_data[i]),
 				.o_peout_valid(peout_valid[i]),  // This is a pulse
