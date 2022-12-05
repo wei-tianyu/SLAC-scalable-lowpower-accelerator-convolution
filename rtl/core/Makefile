@@ -22,7 +22,7 @@ UTILFILES 	 = ../utils/SPad.sv
 UTILFILES 	 = ../utils/shift_reg.sv
 PEFILES   	 = PE.sv
 PEFILES   	+= PE_row.sv
-PEFILES   	+= PE_cluster.sv
+# PEFILES   	+= PE_cluster.sv
 # GLBFILES  	+= glb_iact.sv
 # GLBFILES  	+= glb_psum.sv
 # GLBFILES  	+= glb_weight.sv
@@ -42,13 +42,13 @@ LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 #########################configure part################################################
 # SIMULATION CONFIG -> just need to change this to change the simulation
 export SIMFILES
-export DESIGN_NAME = PE_cluster
+export DESIGN_NAME = PE_row
 export CLOCK_NET_NAME = clk
 export RESET_NET_NAME = reset
 export CLOCK_PERIOD = 4
 
-export DONT_TOUCH_NAME_DDC =  PE_row.ddc
-export DONT_TOUCH_NAME = PE_row
+# export DONT_TOUCH_NAME_DDC =  ../../synth/PE_row.ddc
+# export DONT_TOUCH_NAME = PE_row
 
 # TESTBENCH = ../../testbench/router_cluster_5x5_tb.sv
 # HEADERS = $(wildcard *.svh)
@@ -81,7 +81,7 @@ simv:	$(HEADERS) $(SIMFILES) $(TESTBENCH)
 
 #use dc_shell to synthesis##################################
 file_vg: $(HEADERS) $(SIMFILES) $(SYN_TCL_FILE)
-	dc_shell-t -f $(SYN_TCL_FILE) | tee synth_$(DESIGN_NAME).out
+	dc_shell-t -f $(SYN_TCL_FILE) | tee ../../synth/synth_$(DESIGN_NAME).out
 
 #complie the testbench with the structural verilog#######################
 syn_simv:	file_vg $(HEADERS) $(SYNFILES) $(TESTBENCH)
@@ -91,11 +91,11 @@ s_syn_simv: $(HEADERS) $(SYNFILES) $(TESTBENCH) $(HEADERS)
 	$(VCS) $(HEADERS) $(TESTBENCH) $(SYNFILES) $(LIB) -o syn_simv
 #run the structural test, get the result#######################
 syn:	syn_simv
-	./syn_simv | tee syn_program_$(DESIGN_NAME).out
+	./syn_simv | tee ../../synth/syn_program_$(DESIGN_NAME).out
 
 #just do behaviroal simulation##################################
 s_syn: s_syn_simv
-	./syn_simv | tee syn_program_$(DESIGN_NAME).out
+	./syn_simv | tee ../../synth/syn_program_$(DESIGN_NAME).out
 
 # Debugging using verdi##################################
 novas.rc: ../../initialnovas.rc
@@ -122,5 +122,8 @@ clean:
 
 nuke:	clean
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out *.ddc *.pvl *.syn *.mr *.svf
+	rm -rvf ../../synth/*.vg ../../synth/*.rep ../../synth/*.db 
+	rm -rvf ../../synth/*.chk ../../synth/*.log ../../synth/*.out 
+	rm -rvf ../../synth/*.ddc ../../synth/*.pvl ../../synth/*.syn ../../synth/*.mr ../../synth/*.svf
 
 .PHONY: clean nuke

@@ -37,7 +37,7 @@ set CLK_PERIOD $env(CLOCK_PERIOD)
 #/* to moderate sized designs.  You may need to alter it    */
 #/* when synthesizing your final project.                   */
 #/***********************************************************/
-set SYN_DIR ./
+set SYN_DIR ../../synth/
 set target_library "lec25dscc25_TT.db"
 
 set link_library [concat  "*" $target_library]
