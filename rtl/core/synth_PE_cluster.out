@@ -1,0 +1,453 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version Q-2019.12-SP4 for linux64 - Jun 02, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+###############################################################################
+#/*   FILE        : general.tcl                         
+#/*   Description : Default Synopsys Design Compiler Script 
+#/*   Usage       : dc_shell -tcl_mode -f ISR.scr          
+#/*   Describe    :	makefile for universal test
+#/*   Author      : 	Tianyu Wei
+#/*   Time        : 	2022-10-27
+#/*   Version     : 	2.0
+###############################################################################
+#/***********************************************************/
+#/***********************************************************/
+#/* The following lines must be updated for every           */
+#/* new design                                              */
+#/***********************************************************/
+# set_host_options -max_cores 8
+set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
+./ /afs/umich.edu/class/eecs470/lib/synopsys/
+read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
+Loading db file '/usr/caen/synopsys-synth-2019.12-SP4/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2019.12-SP4/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Reading ddc file '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_row.ddc'.
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loaded 1 design.
+Current design is 'PE_row'.
+PE_row
+set_dont_touch $env(DONT_TOUCH_NAME)
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+1
+read_file -f sverilog [list "$env(SIMFILES)"]
+Loading sverilog files: '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/utils/shift_reg.sv' '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv' '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_row.sv' '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_cluster.sv' 
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Compiling source file /afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/utils/shift_reg.sv
+Compiling source file /afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv
+Module 'shift_reg' was not elaborated because it contains the 'template' attribute.  Instead, it has been saved as a template.
+Compiling source file /afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_row.sv
+Module 'PE' was not elaborated because it contains the 'template' attribute.  Instead, it has been saved as a template.
+Compiling source file /afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_cluster.sv
+Module 'PE_row' was not elaborated because it contains the 'template' attribute.  Instead, it has been saved as a template.
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  PE_cluster/77   |   16   |    1    |      4       |
+======================================================
+Presto compilation completed successfully.
+Current design is now '/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_cluster.db:PE_cluster'
+Loaded 1 design.
+Current design is 'PE_cluster'.
+PE_cluster
+# analyze module with different parameters
+# analyze -f sverilog "unit.sv"
+# elaborate counter_binary_1 -parameter REQS=3,WIDTH=64
+set design_name $env(DESIGN_NAME)
+PE_cluster
+set clock_name $env(CLOCK_NET_NAME)
+clk
+set reset_name $env(RESET_NET_NAME)
+reset
+set CLK_PERIOD $env(CLOCK_PERIOD)
+4
+#/***********************************************************/
+#/* The rest of this file may be left alone for most small  */
+#/* to moderate sized designs.  You may need to alter it    */
+#/* when synthesizing your final project.                   */
+#/***********************************************************/
+set SYN_DIR ./
+./
+set target_library "lec25dscc25_TT.db"
+lec25dscc25_TT.db
+set link_library [concat  "*" $target_library]
+* lec25dscc25_TT.db
+#/***********************************************************/
+#/* Set some flags for optimisation */
+set compile_top_all_paths "true"
+true
+set auto_wire_load_selection "false"
+false
+#/***********************************************************/
+#/*  Clk Periods/uncertainty/transition                     */
+set CLK_TRANSITION 0.1
+0.1
+set CLK_UNCERTAINTY 0.1
+0.1
+set CLK_LATENCY 0.1
+0.1
+#/* Input/output Delay values */
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
+#/* Critical Range (ns) */
+set CRIT_RANGE 1.0
+1.0
+#/***********************************************************/
+#/* Design Constrains: Not all used                         */
+set MAX_TRANSITION 1.0
+1.0
+set FAST_TRANSITION 0.1
+0.1
+set MAX_FANOUT 32
+32
+set MID_FANOUT 8
+8
+set LOW_FANOUT 1
+1
+set HIGH_DRIVE 0
+0
+set HIGH_LOAD 1.0
+1.0
+set AVG_LOAD 0.1
+0.1
+set AVG_FANOUT_LOAD 10
+10
+#/***********************************************************/
+#/*BASIC_INPUT = cb18os120_tsmc_max/nd02d1/A1
+#BASIC_OUTPUT = cb18os120_tsmc_max/nd02d1/ZN*/
+set DRIVING_CELL dffacs1
+dffacs1
+#/* DONT_USE_LIST = {   } */
+#/*************operation cons**************/
+#/*OP_WCASE = WCCOM;
+#OP_BCASE = BCCOM;*/
+set WIRE_LOAD "tsmcwire"
+tsmcwire
+set LOGICLIB lec25dscc25_TT
+lec25dscc25_TT
+#/*****************************/
+#/* Sourcing the file that sets the Search path and the libraries(target,link) */
+set sys_clk $clock_name
+clk
+set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
+./PE_cluster.vg
+set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
+./PE_cluster.ddc
+set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+./PE_cluster.rep
+set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
+./PE_cluster.chk
+#/* if we didnt find errors at this point, run */
+if {  $dc_shell_status != [list] } {
+   current_design $design_name
+  link
+  set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
+  set_wire_load_mode top
+  set_fix_multiple_port_nets -outputs -buffer_constants
+  create_clock -period $CLK_PERIOD -name $sys_clk [find port $sys_clk]
+  set_clock_uncertainty $CLK_UNCERTAINTY $sys_clk
+  set_fix_hold $sys_clk
+  
+  group_path -from [all_inputs] -name input_grp
+  group_path -to [all_outputs] -name output_grp
+  
+  set_driving_cell  -lib_cell $DRIVING_CELL [all_inputs]
+  remove_driving_cell [find port $sys_clk]
+  set_fanout_load $AVG_FANOUT_LOAD [all_outputs]
+  set_load $AVG_LOAD [all_outputs]
+  set_input_delay $AVG_INPUT_DELAY -clock $sys_clk [all_inputs]
+  remove_input_delay -clock $sys_clk [find port $sys_clk]
+  set_output_delay $AVG_OUTPUT_DELAY -clock $sys_clk [all_outputs]
+  set_dont_touch $reset_name
+  set_resistance 0 $reset_name
+  set_drive 0 $reset_name
+  set_critical_range $CRIT_RANGE [current_design]
+  set_max_delay $CLK_PERIOD [all_outputs]
+  set MAX_FANOUT $MAX_FANOUT
+  set MAX_TRANSITION $MAX_TRANSITION
+  
+  uniquify
+  ungroup -all -flatten
+  redirect $chk_file { check_design }
+#   compile -map_effort high
+  compile_ultra
+  write -hier -format verilog -output $netlist_file $design_name
+  write -hier -format ddc -output $ddc_file $design_name
+  redirect $rep_file { report_design -nosplit }
+  redirect -append $rep_file { report_area }
+  redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+  redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+  remove_design -all
+  read_file -format verilog $netlist_file
+  current_design $design_name
+  redirect -append $rep_file { report_reference -nosplit }
+  quit
+} else {
+   quit
+}
+Current design is 'PE_cluster'.
+
+  Linking design 'PE_cluster'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (2 designs)               /afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE_cluster.db, etc
+  lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+
+Information: Building the design 'PE_row' instantiated from design 'PE_cluster' with
+	the parameters "DATA_WIDTH=16,MAX_FILTER_WIDTH=11". (HDL-193)
+Presto compilation completed successfully. (PE_row_DATA_WIDTH16_MAX_FILTER_WIDTH11)
+Information: Building the design 'PE' instantiated from design 'PE_row_DATA_WIDTH16_MAX_FILTER_WIDTH11' with
+	the parameters "DATA_WIDTH=16,MAX_FILTER_WIDTH=11". (HDL-193)
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 97 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  wr_w_col_ptr_reg   | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  wr_w_col_ptr_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 107 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  wr_w_row_ptr_reg   | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  wr_w_row_ptr_reg   | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 121 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    lane_cal_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 133 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    lane_feed_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 172 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  rd_w_row_ptr_reg   | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 187 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     pe_done_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   o_row_done_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 203 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  o_peout_valid_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine PE_DATA_WIDTH16_MAX_FILTER_WIDTH11 line 210 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/core/PE.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      psum_reg       | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (PE_DATA_WIDTH16_MAX_FILTER_WIDTH11)
+Information: Building the design 'shift_reg' instantiated from design 'PE_DATA_WIDTH16_MAX_FILTER_WIDTH11' with
+	the parameters "DATA_WIDTH=16,DEPTH=11". (HDL-193)
+
+Inferred memory devices in process
+	in routine shift_reg_DATA_WIDTH16_DEPTH11 line 43 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/utils/shift_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|       mem_reg       | Flip-flop |  176  |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine shift_reg_DATA_WIDTH16_DEPTH11 line 60 in file
+		'/afs/eecs.umich.edu/vlsisp/users/billywty/EECS573-final-project/rtl/utils/shift_reg.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    o_rd_ptr_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully. (shift_reg_DATA_WIDTH16_DEPTH11)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Current design is 'PE_cluster'.
+Information: Uniquified 16 instances of design 'PE_row_DATA_WIDTH16_MAX_FILTER_WIDTH11'. (OPT-1056)
+Information: Uniquified 176 instances of design 'PE_DATA_WIDTH16_MAX_FILTER_WIDTH11'. (OPT-1056)
+Information: Uniquified 1936 instances of design 'shift_reg_DATA_WIDTH16_DEPTH11'. (OPT-1056)
+Information: Updating graph... (UID-83)
+Warning: Design 'PE_cluster' contains 1960 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Loading db file '/usr/caen/synopsys-synth-2019.12-SP4/libraries/syn/dw_foundation.sldb'
+Information: Failed to find dw_foundation.sldb in the user defined search_path, load it from 'Synopsys Root'. (UISN-70)
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | Q-2019.12-DWBB_201912.3 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+Warning: Dont_touch on net 'reset' may be overridden by compile because it
+	is connected to generic logic. Use all_connected to see net
+	connections. (OPT-461)
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 20267 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+

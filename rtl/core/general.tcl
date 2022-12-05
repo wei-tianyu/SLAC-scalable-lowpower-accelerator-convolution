@@ -14,7 +14,7 @@
 #/* The following lines must be updated for every           */
 #/* new design                                              */
 #/***********************************************************/
-set_host_options -max_cores 8
+# set_host_options -max_cores 8
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
 read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
 set_dont_touch $env(DONT_TOUCH_NAME)
