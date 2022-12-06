@@ -14,7 +14,7 @@
 #/* The following lines must be updated for every           */
 #/* new design                                              */
 #/***********************************************************/
-# set_host_options -max_cores 8
+set_host_options -max_cores 8
 set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
 read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
 set_dont_touch $env(DONT_TOUCH_NAME)
@@ -131,6 +131,7 @@ if {  $dc_shell_status != [list] } {
   uniquify
   ungroup -all -flatten
   redirect $chk_file { check_design }
+  set_false_path -from [get_port {i_stride i_row_num i_row_en i_filter_width}]
 #   compile -map_effort high
   compile_ultra
   write -hier -format verilog -output $netlist_file $design_name

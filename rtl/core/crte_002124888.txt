@@ -1,0 +1,251 @@
+CRTE_SNAPSHOT_START
+
+SECTION_CRTE_VERSION
+3.0
+
+SECTION_PID
+2124888
+
+SECTION_POLLING_INTERVAL
+5
+
+SECTION_DATE_TIME
+Tue Dec 06 11:38:48 EST 2022 (1670344728)
+
+SECTION_OS_VERSION
+osname: Linux
+hostname: caen-vnc-mi13.engin.umich.edu
+arch: x86_64
+release_version: 4.18.0-372.9.1.el8.x86_64
+
+SECTION_IPC_INFO
+Error: command <ipcs -msq 2>/dev/null> can not be executed.
+SECTION_ULIMIT
+Error: command <sh -c "ulimit -a"> can not be executed.
+SECTION_SYSCONF
+_SC_THREAD_SAFE_FUNCTIONS= 200809
+_SC_CLK_TCK= 100
+_SC_OPEN_MAX= 262144
+_SC_PAGE_SIZE= 4096
+_SC_ARG_MAX= 4611686018427387903
+_SC_CHILD_MAX= 87222
+_SC_LINE_MAX= 2048
+
+SECTION_FULL_COMMAND
+/usr/caen/synopsys-synth-2022.03-SP3/linux64/syn/bin/common_shell_exec -shell dc_shell -r /usr/caen/synopsys-synth-2022.03-SP3 -f general.tcl
+
+SECTION_CPUINFO
+total_core: 11
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+model_name:  Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
+flags:  fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid xsaveopt arat md_clear flush_l1d arch_capabilities
+cpu_family: 6
+core_frequency_mhz: 2394
+core_per_socket: 0
+stepping: 0
+cache_size_kb: 28160
+ht: 0
+
+SECTION_OS_RELEASE_VERSION
+Error: command <cat /etc/redhat-release> can not be executed.
+
+SECTION_SYS/VM
+Error: command <grep '' /proc/sys/vm/* 2> /dev/null> can not be executed.
+
+SECTION_SWAP
+swap_partition: /dev/dm-1
+size_gb: 9
+
+CRTE_SNAPSHOT_END
+
+CRTE_PERIODIC_START 1 1670344728745
+
+SECTION_MPSTAT
+total_core: 11
+
+CPU     %user   %kernel %wait   %idle   
+all   2.074986 0.661734 0.102561 97.160721
+0     1.845089 0.665714 0.103465 97.385735
+1     2.377404 0.663733 0.110182 96.848686
+2     2.241029 0.673104 0.109453 96.976418
+3     2.114627 0.611593 0.100228 97.173553
+4     1.813056 0.609526 0.096298 97.481117
+5     1.643991 0.564752 0.091944 97.699310
+6     2.991535 0.756633 0.113366 96.138466
+7     2.313327 0.705894 0.103832 96.876945
+8     2.011075 0.642766 0.094754 97.251396
+9     1.828322 0.615857 0.091965 97.463852
+10     1.645698 0.769551 0.112689 97.472061
+SECTION_LOADAVG
+1.72 1.59 1.63 3/1936 2132211
+
+SECTION_PID_STATUS
+name: common_shell_ex
+state: 1
+vmsize: 16324052
+vmrss: 9635348
+vmdata: 15592676
+vmstk: 212
+vmexe: 307296
+vmlib: 231528
+threads: 1
+
+SECTION_PROCESS_CPU_UTIL
+pid: 2124888
+cpu_total_time: 10252026937
+cpu_used_time: 143553
+cpu_p: 
+
+SECTION_SYSTEM_CPU_UTIL
+sys_cpu_p: 
+
+SECTION_MEMINFO
+memtotal: 22398056
+memfree: 4494808
+cached: 3643676
+swapcached: 521296
+active: 8057040
+swaptotal: 10485756
+swapfree: 4369024
+
+SECTION_SMAPS
+shared_kb: 9984
+private_kb: 9624760
+
+SECTION_DF
+Filesystem  Size  Used Avail Use%
+filesystem        29G  0G  27G    1
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          1966080  4503 1961577   4294923835
+
+SECTION_CWD
+Filesystem  Size  Used Avail Use%
+filesystem        50000G  41840G  8159G    84
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          0  0 0   0
+
+SECTION_SWAP_RATE
+blk_read: 183694680
+blk_wrtn: 745168672
+swap_in_rate: 
+swap_out_rate: 
+swap_in_rate: 
+swap_out_rate: 
+
+SECTION_FD_SIZE
+files: 32
+total_size: 41016293
+
+SECTION_NET_INTERFACE
+total_eth_avbl: 1
+
+name net_rx_err net_rx_drp net_tx_err net_tx_drp 
+    lo:         0        0        0        0
+
+SECTION_NFSSTAT
+readlink: 0
+write: 0
+getattr: 26
+retrans: 0
+raw_data: 
+net 0 0 0 0
+rpc 67052939 41 67053250
+proc4 67 264 313509 0 0 25575712 23655 0 0 21276077 0 24 852060 22 22 3148 604 3148 957855 17684798 274507 8 0 0 0 0 0 16 2704 22604 59136 40 0 0 0 0 3148 0 0 0 0 0 0 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+
+SECTION_THREAD_CPU_UTIL
+2124888 : 2124888 (common_shell_ex) R 2124887 2124886 2124849 34819 2124886 16384 56004215 15603 2875835 1 121729 21716 89 38 20 0 1 0 932572003 16715829248 2408266 18446744073709551615 4194304 318864445 140737488344064 0 0 0 0 67112960 1132490495 0 0 0 17 1 0 0 148299 0 0 406036688 437354767 1660915712 140737488345335 140737488345477 140737488345477 140737488351153 0
+
+CRTE_PERIODIC_END 1 1670344728745

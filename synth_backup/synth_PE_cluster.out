@@ -1,0 +1,568 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version T-2022.03-SP3 for linux64 - Jul 12, 2022 
+
+                    Copyright (c) 1988 - 2022 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+Initializing...
+###############################################################################
+#/*   FILE        : general.tcl                         
+#/*   Description : Default Synopsys Design Compiler Script 
+#/*   Usage       : dc_shell -tcl_mode -f ISR.scr          
+#/*   Describe    :	makefile for universal test
+#/*   Author      : 	Tianyu Wei
+#/*   Time        : 	2022-10-27
+#/*   Version     : 	2.0
+###############################################################################
+#/***********************************************************/
+#/***********************************************************/
+#/* The following lines must be updated for every           */
+#/* new design                                              */
+#/***********************************************************/
+# set_host_options -max_cores 8
+set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
+./ /afs/umich.edu/class/eecs470/lib/synopsys/
+read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Reading ddc file '/home/billywty/cnn_accelerator/synth/PE_row.ddc'.
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loaded 1 design.
+Current design is 'PE_row'.
+PE_row
+set_dont_touch $env(DONT_TOUCH_NAME)
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+1
+read_file -f sverilog [list "$env(SIMFILES)"]
+Loading sverilog files: '/home/billywty/cnn_accelerator/rtl/utils/shift_reg.sv' '/home/billywty/cnn_accelerator/rtl/core/PE.sv' '/home/billywty/cnn_accelerator/rtl/core/PE_cluster.sv' 
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Warning: Can't read link_library file 'your_library.db'. (UID-3)
+Compiling source file /home/billywty/cnn_accelerator/rtl/utils/shift_reg.sv
+Compiling source file /home/billywty/cnn_accelerator/rtl/core/PE.sv
+Module 'shift_reg' was not elaborated because it contains the 'template' attribute.  Instead, it has been saved as a template.
+Compiling source file /home/billywty/cnn_accelerator/rtl/core/PE_cluster.sv
+Module 'PE' was not elaborated because it contains the 'template' attribute.  Instead, it has been saved as a template.
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|  PE_cluster/77   |   16   |    1    |      4       |
+======================================================
+Presto compilation completed successfully.
+Current design is now '/home/billywty/cnn_accelerator/rtl/core/PE_cluster.db:PE_cluster'
+Loaded 1 design.
+Current design is 'PE_cluster'.
+PE_cluster
+# analyze module with different parameters
+# analyze -f sverilog "unit.sv"
+# elaborate counter_binary_1 -parameter REQS=3,WIDTH=64
+set design_name $env(DESIGN_NAME)
+PE_cluster
+set clock_name $env(CLOCK_NET_NAME)
+clk
+set reset_name $env(RESET_NET_NAME)
+reset
+set CLK_PERIOD $env(CLOCK_PERIOD)
+4
+#/***********************************************************/
+#/* The rest of this file may be left alone for most small  */
+#/* to moderate sized designs.  You may need to alter it    */
+#/* when synthesizing your final project.                   */
+#/***********************************************************/
+set SYN_DIR ../../synth/
+../../synth/
+set target_library "lec25dscc25_TT.db"
+lec25dscc25_TT.db
+set link_library [concat  "*" $target_library]
+* lec25dscc25_TT.db
+#/***********************************************************/
+#/* Set some flags for optimisation */
+set compile_top_all_paths "true"
+true
+set auto_wire_load_selection "false"
+false
+#/***********************************************************/
+#/*  Clk Periods/uncertainty/transition                     */
+set CLK_TRANSITION 0.1
+0.1
+set CLK_UNCERTAINTY 0.1
+0.1
+set CLK_LATENCY 0.1
+0.1
+#/* Input/output Delay values */
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
+#/* Critical Range (ns) */
+set CRIT_RANGE 1.0
+1.0
+#/***********************************************************/
+#/* Design Constrains: Not all used                         */
+set MAX_TRANSITION 1.0
+1.0
+set FAST_TRANSITION 0.1
+0.1
+set MAX_FANOUT 32
+32
+set MID_FANOUT 8
+8
+set LOW_FANOUT 1
+1
+set HIGH_DRIVE 0
+0
+set HIGH_LOAD 1.0
+1.0
+set AVG_LOAD 0.1
+0.1
+set AVG_FANOUT_LOAD 10
+10
+#/***********************************************************/
+#/*BASIC_INPUT = cb18os120_tsmc_max/nd02d1/A1
+#BASIC_OUTPUT = cb18os120_tsmc_max/nd02d1/ZN*/
+set DRIVING_CELL dffacs1
+dffacs1
+#/* DONT_USE_LIST = {   } */
+#/*************operation cons**************/
+#/*OP_WCASE = WCCOM;
+#OP_BCASE = BCCOM;*/
+set WIRE_LOAD "tsmcwire"
+tsmcwire
+set LOGICLIB lec25dscc25_TT
+lec25dscc25_TT
+#/*****************************/
+#/* Sourcing the file that sets the Search path and the libraries(target,link) */
+set sys_clk $clock_name
+clk
+set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
+../../synth/PE_cluster.vg
+set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
+../../synth/PE_cluster.ddc
+set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+../../synth/PE_cluster.rep
+set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
+../../synth/PE_cluster.chk
+#/* if we didnt find errors at this point, run */
+if {  $dc_shell_status != [list] } {
+   current_design $design_name
+  link
+  set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
+  set_wire_load_mode top
+  set_fix_multiple_port_nets -outputs -buffer_constants
+  create_clock -period $CLK_PERIOD -name $sys_clk [find port $sys_clk]
+  set_clock_uncertainty $CLK_UNCERTAINTY $sys_clk
+  set_fix_hold $sys_clk
+  
+  group_path -from [all_inputs] -name input_grp
+  group_path -to [all_outputs] -name output_grp
+  
+  set_driving_cell  -lib_cell $DRIVING_CELL [all_inputs]
+  remove_driving_cell [find port $sys_clk]
+  set_fanout_load $AVG_FANOUT_LOAD [all_outputs]
+  set_load $AVG_LOAD [all_outputs]
+  set_input_delay $AVG_INPUT_DELAY -clock $sys_clk [all_inputs]
+  remove_input_delay -clock $sys_clk [find port $sys_clk]
+  set_output_delay $AVG_OUTPUT_DELAY -clock $sys_clk [all_outputs]
+  set_dont_touch $reset_name
+  set_resistance 0 $reset_name
+  set_drive 0 $reset_name
+  set_critical_range $CRIT_RANGE [current_design]
+  set_max_delay $CLK_PERIOD [all_outputs]
+  set MAX_FANOUT $MAX_FANOUT
+  set MAX_TRANSITION $MAX_TRANSITION
+  
+  uniquify
+  ungroup -all -flatten
+  redirect $chk_file { check_design }
+#   compile -map_effort high
+  compile_ultra
+  write -hier -format verilog -output $netlist_file $design_name
+  write -hier -format ddc -output $ddc_file $design_name
+  redirect $rep_file { report_design -nosplit }
+  redirect -append $rep_file { report_area }
+  redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+  redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+  remove_design -all
+  read_file -format verilog $netlist_file
+  current_design $design_name
+  redirect -append $rep_file { report_reference -nosplit }
+  quit
+} else {
+   quit
+}
+Current design is 'PE_cluster'.
+
+  Linking design 'PE_cluster'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (2 designs)               /home/billywty/cnn_accelerator/rtl/core/PE_cluster.db, etc
+  lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+
+Warning: The driving cell dffacs1 has multiple outputs, -pin is required. (UID-989)
+Warning: Design rule attributes from the driving cell will be set on the port 'clk'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'reset'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_filter_width[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_filter_width[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_filter_width[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_filter_width[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_filter_width[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_row_num[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_row_num[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_row_num[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_row_num[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_row_num[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_stride[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_stride[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_stride[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_stride[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_stride[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_data[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_ifmap_valid'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_reset_ifmap'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_data[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'i_weight_valid'. (UID-401)
+Current design is 'PE_cluster'.
+Warning: All hierarchical cells are don't touched. No cells can be ungrouped. (UID-229)
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/dw_foundation.sldb'
+Information: Failed to find dw_foundation.sldb in the user defined search_path, load it from 'Synopsys Root'. (UISN-70)
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | T-2022.03-DWBB_202203.3 |     *     |
+| Licensed DW Building Blocks        | T-2022.03-DWBB_202203.3 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 1863365                                |
+| Number of User Hierarchies                              | 16                                     |
+| Sequential Cell Count                                   | 359552                                 |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 4                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 1863092                                |
+| Number of Dont Touch Nets                               | 2212139                                |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -outputs -buffer_constants             |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 23 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'PE_cluster'
+
+Loaded alib file './alib-52/lec25dscc25_TT.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 17 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'PE_cluster'
+Information: Added key list 'DesignWare' to design 'PE_cluster'. (DDB-72)
+ Implement Synthetic for 'PE_cluster'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:20:03 144385660.6      2.13   36298.2    1283.2                           50650356.0000      0.00  
+    0:27:03 144385635.7      2.13   36295.5    1283.2                           50650352.0000      0.00  
+
+  Beginning Constant Register Removal
+  -----------------------------------
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+
+  Beginning Isolate Ports
+  -----------------------
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:33:46 144362170.8      2.19   36249.5    1215.2                           50652360.0000      0.00  
+    0:36:05 144362486.0      2.16   36158.3    1215.2                           50652380.0000      0.00  
+    0:36:05 144362486.0      2.16   36158.3    1215.2                           50652380.0000      0.00  
+    0:36:26 144362486.0      2.16   36158.3    1215.2                           50652380.0000      0.00  
+    0:36:58 144362486.0      2.16   36158.3    1215.2                           50652380.0000      0.00  
+    0:44:42 144362403.0      2.22   36221.1    1215.2                           50652364.0000      0.00  
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+    0:48:39 144367247.0      2.22   35930.4    1200.4                           50650832.0000      0.00  
+    0:48:41 144367247.0      2.22   35930.4    1200.4                           50650832.0000      0.00  
+    0:48:45 144367247.0      2.22   35930.4    1200.4                           50650832.0000      0.00  
+    0:51:35 144366342.9      2.22   35905.8    1200.3                           50650884.0000      0.00  
+    0:51:37 144366342.9      2.22   35905.8    1200.3                           50650884.0000      0.00  
+    0:52:08 144366201.9      2.21   35950.7    1200.3                           50650884.0000      0.00  
+    0:52:08 144366201.9      2.21   35950.7    1200.3                           50650884.0000      0.00  
+    0:52:09 144366235.0      2.21   35950.4    1200.3                           50650888.0000      0.00  
+    0:52:10 144366235.0      2.21   35950.4    1200.3                           50650888.0000      0.00  
+    0:52:10 144366235.0      2.21   35950.4    1200.3                           50650888.0000      0.00  
+    0:52:12 144366235.0      2.21   35950.4    1200.3                           50650888.0000      0.00  
+    0:52:46 144366459.0      2.15   34719.6    1197.4                           50650968.0000      0.00  
+    0:52:47 144366459.0      2.15   34719.6    1197.4                           50650968.0000      0.00  
+    0:53:29 144366450.7      2.17   34692.7    1197.4                           50650944.0000      0.00  
+    0:53:30 144366450.7      2.17   34692.7    1197.4                           50650944.0000      0.00  
+    0:53:55 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+    0:53:56 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+    0:54:32 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+    0:54:34 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+    0:54:58 144366575.1      2.16   34696.5    1197.4                           50651044.0000      0.00  
+    0:54:59 144366575.1      2.16   34696.5    1197.4                           50651044.0000      0.00  
+    0:55:34 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+
+
+  Beginning Design Rule Fixing  (max_transition)
+  ----------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:55:36 144366467.3      2.15   34703.6    1197.4                           50650976.0000      0.00  
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+    0:56:40 144367985.2      2.15   32577.2    1173.1                           50651164.0000      0.00  
+    0:57:16 144370058.8      2.18   32552.1    1173.1                           50651788.0000      0.00  
+
+
+  Beginning Leakage Power Optimization  (max_leakage_power 0)
+  ------------------------------------
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    0:57:17 144370058.8      2.18   32552.1    1173.1                           50651788.0000      0.00  
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+    0:59:32 144368516.0      2.13   31588.7    1173.1                           50649320.0000      0.00  
+    1:00:08 144368391.6      2.13   31564.2    1173.1                           50649464.0000      0.00  
+    1:00:10 144368391.6      2.13   31564.2    1173.1                           50649464.0000      0.00  
+    1:02:40 144368358.4      2.13   31564.8    1173.1                           50649448.0000      0.00  
+    1:02:42 144368358.4      2.13   31564.8    1173.1                           50649448.0000      0.00  
+    1:03:30 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:03:30 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:03:30 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:03:31 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:04:09 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:04:10 144368416.5      2.12   31564.1    1173.1                           50649472.0000      0.00  
+    1:06:37 144368424.8      2.15   31566.9    1173.1                           50649500.0000      0.00  
+    1:06:38 144368424.8      2.15   31566.9    1173.1                           50649500.0000      0.00  
+    1:06:39 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:39 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:40 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:40 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:41 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:41 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:41 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:42 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:06:43 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+
+                                  TOTAL                                                            
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE   MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER      COST    
+  --------- --------- --------- --------- --------- ------------------------- --------- -----------
+    1:08:01 144368449.6      2.12   31603.5    1173.1                           50649412.0000      0.00  
+    1:12:11 144360379.2      2.12   35632.1    1214.1                           50650132.0000      0.00  
+    1:12:20 144360379.2      2.12   35632.1    1214.1                           50650132.0000      0.00  
+    1:12:21 144360379.2      2.12   35632.1    1214.1                           50650132.0000      0.00  
+    1:14:40 144362179.1      2.12   34818.3    1174.4                           50649976.0000      0.00  
+
+  Beginning Delay Optimization HSVT Pass
+  --------------------------------------
+    1:14:42 144362179.1      2.12   34818.3    1174.4                           50649976.0000      0.00  
+    1:14:42 144362179.1      2.12   34818.3    1174.4                           50649976.0000      0.00  
+    1:14:43 144362179.1      2.12   34818.3    1174.4                           50649976.0000      0.00  
+    1:14:43 144362179.1      2.12   34818.3    1174.4                           50649976.0000      0.00  
+    1:16:19 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:19 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:20 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:20 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+
+  Beginning Delay Optimization
+  ----------------------------
+    1:16:21 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:21 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:22 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:22 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:22 144364808.4      2.12   34646.1    1173.1                           50648276.0000      0.00  
+    1:16:27 144364833.3      2.12   34277.1    1173.1                           50648296.0000      0.00  
+    1:16:32 144364833.3      2.12   34277.1    1173.1                           50648296.0000      0.00  
+    1:16:32 144364833.3      2.12   34277.1    1173.1                           50648296.0000      0.00  
+    1:20:24 144364617.6      2.12   34276.2    1173.1                           50648320.0000      0.00  
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'PE_cluster' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'genblk1[15].proc_ele_row/clk': 359552 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Writing verilog file '/home/billywty/cnn_accelerator/synth/PE_cluster.vg'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+Writing ddc file '../../synth/PE_cluster.ddc'.
+Removing design 'PE_row'
+Removing design 'PE_cluster'
+Removing library 'gtech'
+Removing library 'lec25dscc25_TT'
+Removing library 'standard.sldb'
+Removing library 'dw_foundation.sldb'
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/gtech.db'
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/standard.sldb'
+  Loading link library 'lec25dscc25_TT'
+  Loading link library 'gtech'
+Loading verilog file '/home/billywty/cnn_accelerator/synth/PE_cluster.vg'
+Detecting input file type automatically (-rtl or -netlist).
+Running DC verilog reader
+Performing 'read' command.
+Compiling source file /home/billywty/cnn_accelerator/synth/PE_cluster.vg
+Reading with netlist reader (equivalent to -netlist option).
+Verilog netlist reader completed successfully.
+Current design is now '/home/billywty/cnn_accelerator/synth/PE_row.db:PE_row'
+Loaded 2 designs.
+Current design is 'PE_row'.
+Current design is 'PE_cluster'.
+
+Memory usage for this session 5126 Mbytes.
+Memory usage for this session including child processes 5126 Mbytes.
+CPU usage for this session 5220 seconds ( 1.45 hours ).
+Elapsed time for this session 5455 seconds ( 1.52 hours ).
+
+Thank you...

@@ -1,0 +1,38 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "shift_reg_0000": [
+        "shift_reg_0000",
+        "LMnkb",
+        "module",
+        2
+    ],
+    "PE_0000": [
+        "PE_0000",
+        "MeD7P",
+        "module",
+        3
+    ],
+    "PE_row_0000": [
+        "PE_row_0000",
+        "HKBKH",
+        "module",
+        4
+    ],
+    "PE_cluster": [
+        "PE_cluster",
+        "qyVzi",
+        "module",
+        5
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        6
+    ]
+}

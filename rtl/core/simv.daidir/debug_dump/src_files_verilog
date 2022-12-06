@@ -1,0 +1,4 @@
+/home/billywty/cnn_accelerator/rtl/core/PE.sv
+/home/billywty/cnn_accelerator/rtl/core/PE_cluster.sv
+/home/billywty/cnn_accelerator/rtl/core/PE_row.sv
+/home/billywty/cnn_accelerator/rtl/utils/shift_reg.sv

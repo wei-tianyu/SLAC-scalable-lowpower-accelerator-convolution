@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version T-2022.03-SP3 for linux64 -- Jul 12, 2022
-#@ # Date:   Mon Dec  5 12:17:43 2022
-#@ # Run by: billywty@caen-vnc-mi17.engin.umich.edu
+#@ # Date:   Tue Dec  6 10:48:53 2022
+#@ # Run by: billywty@caen-vnc-mi13.engin.umich.edu
 #@ 
 
 source /usr/caen/synopsys-synth-2022.03-SP3/admin/setup/.synopsys_dc.setup
@@ -8631,7 +8631,7 @@ source -echo -verbose /home/billywty/cnn_accelerator/rtl/core/general.tcl
 #@ #/* The following lines must be updated for every           */
 #@ #/* new design                                              */
 #@ #/***********************************************************/
-#@ # set_host_options -max_cores 8
+#@ set_host_options -max_cores 8
 #@ set search_path [ list "./" "/afs/umich.edu/class/eecs470/lib/synopsys/"]
 #@ read_file -f ddc [list "$env(DONT_TOUCH_NAME_DDC)"]
 #@ set_dont_touch $env(DONT_TOUCH_NAME)
@@ -8654,7 +8654,7 @@ source -echo -verbose /home/billywty/cnn_accelerator/rtl/core/general.tcl
 #@ #/* to moderate sized designs.  You may need to alter it    */
 #@ #/* when synthesizing your final project.                   */
 #@ #/***********************************************************/
-#@ set SYN_DIR ../../synth
+#@ set SYN_DIR ../../synth/
 #@ set target_library "lec25dscc25_TT.db"
 #@ 
 #@ set link_library [concat  "*" $target_library]
@@ -8748,6 +8748,7 @@ source -echo -verbose /home/billywty/cnn_accelerator/rtl/core/general.tcl
 #@   uniquify
 #@   ungroup -all -flatten
 #@   redirect $chk_file { check_design }
+#@   set_false_path -from [get_port {i_stride i_row_num i_row_en i_filter_width}]
 #@ #   compile -map_effort high
 #@   compile_ultra
 #@   write -hier -format verilog -output $netlist_file $design_name

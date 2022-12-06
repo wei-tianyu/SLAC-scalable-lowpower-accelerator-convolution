@@ -9,6 +9,7 @@ module PE_cluster #(
 	input  logic clk, reset,
 	// configuration
 	input  logic [LOG_MFW:0] i_filter_width,
+	input  logic [MAX_ROW_NUM-1:0] i_row_en,
 	input  logic [LOG_MRN:0] i_row_num,
 	input  logic [LOG_MFW:0] i_stride,
 	// write input
@@ -28,13 +29,10 @@ module PE_cluster #(
 	logic [MAX_ROW_NUM-1:0][DATA_WIDTH-1:0] peout_data; 
     logic [MAX_ROW_NUM-1:0] peout_valid;
     logic [MAX_ROW_NUM-1:0] last_psum;
-    logic [MAX_ROW_NUM-1:0] row_en;
 	logic switch_lane;
  	genvar i;
     generate
         for(i = 0; i < MAX_ROW_NUM; i++) begin
-
-			assign row_en[i] = (i < i_row_num);
 
             PE_row #(
 				.DATA_WIDTH(DATA_WIDTH),
@@ -43,7 +41,7 @@ module PE_cluster #(
 				.clk(clk), .reset(reset),
 				// configuration
 				.i_filter_width(i_filter_width),
-				.i_row_en(row_en[i]),
+				.i_row_en(i_row_en[i]),
 				.i_stride(i_stride),
 				// write input
 				.i_ifmap_data(i_ifmap_data),

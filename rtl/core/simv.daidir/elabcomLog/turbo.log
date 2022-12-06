@@ -1,0 +1,5 @@
+Command Line: /usr/caen/vcs-2020.12-SP2-1/linux64/bin/elabcom -logdir /home/billywty/cnn_accelerator/rtl/core/simv.daidir/elabcomLog -simvdaidir /home/billywty/cnn_accelerator/rtl/core/simv.daidir -lib /home/billywty/cnn_accelerator/rtl/core/simv.daidir/work -saveLevel -elab /home/billywty/cnn_accelerator/rtl/core/simv.daidir/kdb -simflow -simdir /home/billywty/cnn_accelerator/rtl/core/simv.daidir/kdb_libs -topfile /home/billywty/cnn_accelerator/rtl/core/simv.daidir/.elabcomTopFile -pkgfile /home/billywty/cnn_accelerator/rtl/core/simv.daidir/.elabcomPkgFile -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
+uname(Linux caen-vnc-mi03.engin.umich.edu 4.18.0-372.9.1.el8.x86_64 #1 SMP Fri Apr 15 22:12:19 EDT 2022 x86_64)
+[INFO] error/warning message 'C00388' has been suppressed.
+[INFO] error/warning message 'C00389' has been suppressed.
+au time 4.541435 0.741996 0.210122 delta 117608448 117608448 total 235413504 235413504
