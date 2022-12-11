@@ -23,18 +23,16 @@ UTILFILES 	 = ../utils/shift_reg.sv
 PEFILES   	 = PE.sv
 PEFILES   	+= PE_row.sv
 PEFILES   	+= PE_cluster.sv
-# PEFILES   	+= PE_cluster.sv
-# GLBFILES  	+= glb_iact.sv
-# GLBFILES  	+= glb_psum.sv
-# GLBFILES  	+= glb_weight.sv
-# GLBFILES  	+= GLB_cluster.sv
-# ROUTERFILES  = router_iact.sv
-# ROUTERFILES += router_psum.sv
-# ROUTERFILES += router_weight.sv
-# ROUTERFILES += router_cluster.sv
-# COREFILE     = HMNoC_cluster.sv
+GLBFILES  	+= glb_iact.sv
+GLBFILES  	+= glb_psum.sv
+GLBFILES  	+= glb_weight.sv
+GLBFILES  	+= GLB_cluster.sv
+ROUTERFILES  = router.sv
+ROUTERFILES += router_cluster.sv
+RLCFILES  = rlc_dec.sv
+RLCFILES += rlc_enc.sv
 
-SIMFILES = $(UTILFILES) $(PEFILES) $(GLBFILES) $(ROUTERFILES) $(COREFILE)
+SIMFILES = $(UTILFILES) $(PEFILES) $(GLBFILES) $(ROUTERFILES) $(RLCFILES)
 ################################################################################
 ## CONFIGURATION
 ################################################################################
@@ -51,7 +49,7 @@ export CLOCK_PERIOD = 4
 export DONT_TOUCH_NAME_DDC =  ../../synth/PE_row.ddc
 export DONT_TOUCH_NAME = PE_row
 
-# TESTBENCH = ../../testbench/router_cluster_5x5_tb.sv
+TESTBENCH = ../../testbench/test_rlc_loop_0.sv
 # HEADERS = $(wildcard *.svh)
 #####################configure part end################################################
 
