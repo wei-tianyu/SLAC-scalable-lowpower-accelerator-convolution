@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 12/01/2019 12:56:24 PM
-// Design Name: 
-// Module Name: glb_iact
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module glb_iact #( parameter DATA_BITWIDTH = 16,
+module glb_weight #( parameter DATA_BITWIDTH = 16,
 			 parameter ADDR_BITWIDTH = 10 )
 		   ( input clk,
 			 input reset,
@@ -61,4 +41,3 @@ module glb_iact #( parameter DATA_BITWIDTH = 16,
 		end
 	
 endmodule
-

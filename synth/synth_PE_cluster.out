@@ -407,3 +407,153 @@ Information: Uniquified 176 instances of design 'PE_DATA_WIDTH16_MAX_FILTER_WIDT
 Information: Uniquified 1936 instances of design 'shift_reg_DATA_WIDTH16_DEPTH11'. (OPT-1056)
 Information: Updating graph... (UID-83)
 Warning: Design 'PE_cluster' contains 1960 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Loading db file '/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/dw_foundation.sldb'
+Information: Failed to find dw_foundation.sldb in the user defined search_path, load it from 'Synopsys Root'. (UISN-70)
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Alib files are up-to-date.
+Information: Running optimization using a maximum of 8 cores. (OPT-1500)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | T-2022.03-DWBB_202203.3 |     *     |
+| Licensed DW Building Blocks        | T-2022.03-DWBB_202203.3 |     *     |
+============================================================================
+
+Warning: Dont_touch on net 'reset' may be overridden by compile because it
+	is connected to generic logic. Use all_connected to see net
+	connections. (OPT-461)
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Comand Line  | compile_ultra                                                                     |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 3827189                                |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 359568                                 |
+| Macro Count                                             | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 4                                      |
+| Number of VT Class                                      | 0                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 1952980                                |
+| Number of Dont Touch Nets                               | 1                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with UPF Data                                    | false                                  |
+----------------------------------------------------------------------------------------------------
+| Variables                                               | Value                                  |
+----------------------------------------------------------------------------------------------------
+| set_fix_multiple_port_nets                              | -outputs -buffer_constants             |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 20268 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+  Simplifying Design 'PE_cluster'
+Information: The register 'genblk1[15].proc_ele_row/genblk1[10].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[9].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[8].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[7].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[6].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[5].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[4].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[3].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[2].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[1].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[15].proc_ele_row/genblk1[0].proc_ele/pe_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[14].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[13].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[12].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[11].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[10].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[9].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[8].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[7].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[6].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[5].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[4].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[3].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[2].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[1].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+Information: The register 'genblk1[0].proc_ele_row/genblk1[10].proc_ele/o_row_done_reg' will be removed. (OPT-1207)
+
+Warning: Dont_touch on net 'reset' may be overridden by compile because it
+	is connected to generic logic. Use all_connected to see net
+	connections. (OPT-461)
+Loaded alib file './alib-52/lec25dscc25_TT.db.alib'
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+
+Error: Insufficient virtual memory.  Please increase swap space, or reduce other processes on this host. (OPT-1603)
+
+
+
+The tool has just encountered a fatal error:
+
+If you encountered this fatal error when using the most recent
+Synopsys release, submit this stack trace and a test case that
+reproduces the problem to the Synopsys Support Center by using
+Enter A Call at http://solvnet.synopsys.com/EnterACall.
+
+* For information about the latest software releases, go to the Synopsys
+  SolvNet Release Library at http://solvnet.synopsys.com/ReleaseLibrary.
+
+* For information about required Operating System patches, go to
+  http://www.synopsys.com/support
+
+
+Release = 'T-2022.03-SP3'  Architecture = 'linux64'  Program = 'dc_shell'
+Exec = '/usr/caen/synopsys-synth-2022.03-SP3/linux64/syn/bin/common_shell_exec'
+
+'13811706 228673713 228675834 228756905 66589254 66592594 59613794 59706545 61856034 61858020 53867016 53873216 52518940 226697397 226892318 316120796 316141655 227011014 226737039 226807967 226892318 316120796 316141655 226873368 226882168 47704871 47748966 47749471 47751255 13830102 12800041 23456126549235'
+
+Stack trace for crashing thread
+-------------------------------
+SNPSee_72fe6ee5e6adf88ac107a01d196ffb8ed40842348ffb0f8b+36
+SNPSee_f1ee00d2049be34bc9fa2aabd0709c661b77ea09a2cd7785+443
+SNPSee_b0111077a1564ec2f03c23d0bb102089cced107fffe7abc9+209
+SNPSee_b0111077a1564ec2f03c23d0bb10208996f73d5da3bdb873ca1599303c3fe6ce+26
+SNPSee_984d05116d5adeee0148d0ab050fb14e+9
+SNPSee_faa31cede3d62524584056cfda141eb0b82b0453d3aa6d20150743b347b864e5+1398
+SNPSee_aaa3ba17ad554c6cb438fd62ec0dbb4c3194cd596b45657743d91123041e0cac+66
+SNPSee_a38b227dfbddfaa0ab8db87583d2840756b8663053fe5155+1266
+SNPSee_c0e751d30aa20b45684bdc5b2846d4f3+4177
+SNPSee_c330831c9ba47c526c742232f8ebb119321b436bc7e1e723+1218
+SNPSee_1eaa922d28a29934f4138043617d5259759cfa0e803d9131+100
+SNPSee_491529b53ce409253333d38c1284bc7c02bed1d340622c72280c34dc4b711545+28168
+SNPSee_491529b53ce4092515211491aa51eeaa46b71dc67acaee2c+80
+SNPSee_800cfa09c4312a2a658022cd459e34616900e8f99890a5ed+2556
+SNPSee_7ea007f17721baa8c52712154029f5e48c5b42d17487296853bec6f509fb5cd7fb8e3aecaf9a59df5ceaf3227abcdf276664c5bfd5ca6b006d34e6f6d0022bb5aa6a0546020548c042f868058edbb564+117
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67+3230
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d+124
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790+71
+SNPSee_5b9e0c983f97901fa4e0af164abe7efeb24c5f4c6136879c869b2b88ca4e26329cbb10d1a609855d+182
+SNPSee_59511b0144537c36c6614840eb25b067+1295
+SNPSee_dfcfd18c870f576645dec230cc55940481eea9a4962927b3b2419a5f9f3803d6e6d6151e8a6657b75c63db485ae230e97b8a0dd27c2cdfedd6e7ab8b3504080f+1119
+SNPSee_18ae1188a5a6482452f3b67abbc891010269f13ce0e30d67+3230
+SNPSee_57415c5b07ec5e8b8118f96e6212a2c42c69fd3f49376c0d+124
+SNPSee_1ac40924fdff8310f5184d6eb67c5798036a89169a27d790+71
+SNPSee_eb883b8643ac3618e46fbd7d90d84cd1d9cf41f1ea1de2433ad64196cf3fcc2ce0cf4135a98ecf06+1304
+SNPSee_c9aef8ff45700e7498f09e7fe7ec58c036cd580d7ddf92c3+168
+SNPSee_d188ae5ca31ec51f7cba18dffac171b0221ec425774837558df4ddc3322fc732e06cbd83d58883e1+295
+SNPSee_3221a15a6f1a35304e1e2a6725c055e64954ed411c02b8fea588b35e0540b178b78986c80d1d5eb53d84afadfe38b7c2+582
+SNPSee_3221a15a6f1a3530a06e6740411df9e026698cb37d965801c2f87fce0f07c0f8+367
+SNPSee_76d6cca1ef29382ca84b036280d53dca+71
+SNPSee_a8c67c391924da59bb0a6e836c77e2d8+5478
+main+9
+__libc_start_main+243
+SNPSee_d06eed713327be76+41
+
+
+A snapshot of runtime data has been captured in /home/billywty/cnn_accelerator/rtl/core/crte_000973096.txt

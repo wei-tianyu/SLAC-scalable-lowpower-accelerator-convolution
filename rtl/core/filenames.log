@@ -98,3 +98,8 @@
 /home/billywty/cnn_accelerator/rtl/core/PE.sv
 /home/billywty/cnn_accelerator/rtl/core/PE_row.sv
 /home/billywty/cnn_accelerator/rtl/core/PE_cluster.sv
+/usr/caen/synopsys-synth-2022.03-SP3/libraries/syn/dw_foundation.sldb
+/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+/home/billywty/cnn_accelerator/rtl/core/alib-52/lec25dscc25_TT.db.alib
+/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
+/home/billywty/cnn_accelerator/rtl/core/alib-52/lec25dscc25_TT.db.alib
